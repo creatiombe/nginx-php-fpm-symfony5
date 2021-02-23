@@ -26,7 +26,7 @@ ENV WKHTMLTOPDF_PATH '/usr/bin/wkhtmltopdf'
 ENV WKHTMLTOIMAGE_PATH '/usr/bin/wkhtmltoimage'
 ENV WKHTML_BASEPATH 'http://127.0.0.1:8080'
 
-RUN apk update && apk upgrade &&\
+RUN apk update && \
     apk add --no-cache \
     gcc musl-dev linux-headers \
     libffi-dev augeas-dev \
