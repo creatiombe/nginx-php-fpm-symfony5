@@ -63,6 +63,7 @@ mkdir -p /var/www/html/ && \
 sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = -1/g" ${fpm_conf}
 COPY conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 COPY conf/nginx-site-ssl.conf /etc/nginx/sites-available/default-ssl.conf
-COPY scripts/start.sh /start.sh
+COPY scripts/start.sh /start.sh 
+RUN chmod 755 /start.sh
 
 EXPOSE 8443 8080
