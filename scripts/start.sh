@@ -130,7 +130,7 @@ if [ -f /etc/nginx/sites-available/default-ssl.conf ]; then
 fi
 
 # Set the desired timezone
-echo date.timezone=$(cat /etc/TZ) > /usr/local/etc/php/conf.d/timezone.ini
+echo date.timezone=${TZ} > /usr/local/etc/php/conf.d/timezone.ini
 
 # Display errors in docker logs
 if [ ! -z "$PHP_ERRORS_STDERR" ]; then
@@ -190,10 +190,8 @@ if [ -z "$SKIP_COMPOSER" ]; then
     # Try auto install for composer
     if [ -f "/var/www/html/composer.lock" ]; then
         if [ "$APPLICATION_ENV" == "development" ]; then
-            composer global require hirak/prestissimo
             composer install --working-dir=/var/www/html
         else
-            composer global require hirak/prestissimo
             composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
         fi
     fi
