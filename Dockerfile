@@ -61,6 +61,7 @@ mkdir -p /etc/nginx/ssl/ && \
 rm -Rf /var/www/* && \
 mkdir -p /var/www/html/ && \
 sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = -1/g" ${fpm_conf}
+sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = -1/g" ${php_vars}
 COPY conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 COPY conf/nginx-site-ssl.conf /etc/nginx/sites-available/default-ssl.conf
 COPY scripts/start.sh /start.sh 
